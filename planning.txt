@@ -1,0 +1,69 @@
+All routes
+
+voters
+Post : /login : to login
+     : {
+        aadharNumber:
+        password:
+       }   
+Post : /signup : to new signup
+     {
+      name:
+      age:
+      aadharNumber:
+      password:
+      role:
+      isVoted:
+     }
+Get  : /voter/:voterId : to get profile
+    {
+        name:
+        age:
+        aadharNumber:
+        password:
+     }
+Get  : /candidate-list : to get all candidate list
+    {
+        name:
+        party:
+    }
+Get  : /candidate/:candidateId : to get candidate details
+    {
+        name:
+        age:
+        party:
+    }
+Post : /voter-vote : to send vote
+    {
+        candidateId:
+        voterId:
+    }
+
+
+candidate
+Get : /vote-count : to get vote count
+    {
+        name:
+        party:
+        vote_count:
+    }
+
+
+admin
+Post : /candidate-signup : to add new candidate
+     {
+        name:
+        age:
+        party:
+        votes:
+        voteCount:
+     }
+Put  : /candidate-signup/:id : to edit candidate
+    {
+        id:
+        filed:
+    }
+Del  : /candidate-signup/:id : to delete candidate
+    {
+        id
+    }
