@@ -4,6 +4,7 @@ const voterRoute = require('./routes/voterRoutes.js')
 const candidateRoute = require('./routes/candidateRoutes.js')
 const app = express();
 app.use(express.json()); // Middleware to parse JSON request body
+require('dotenv').config();
 
 connectDB();
 
@@ -12,6 +13,6 @@ app.use('/voter', voterRoute)
 app.use('/candidate', candidateRoute)
 
 
-app.listen(3000, () => {
+app.listen(3001, () => {
     console.log('server is running on port 3000');
 });

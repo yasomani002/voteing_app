@@ -3,14 +3,20 @@ const mongoose = require('mongoose')
 const adminSchema = new mongoose.Schema({
     name:{
         type:String,
+        required:[true, "Name is required"],
+        trim:true,
+        minlength:[1, "Name cannot be empty"]
     },
     age:{
         type:Number,
-        required:true
+        required:[true, "Age is required"],
+        min:[18, "Age must be at least 18"]  // example rule
     },
     party:{
         type:String,
-        required:true
+        required:[  true, "Party is required"],
+        trim:true,
+        minlength:[1, "Party cannot be empty"]
     },
     votes:[
         {

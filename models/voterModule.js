@@ -3,33 +3,38 @@ const bycrypt = require('bcrypt');
 
 
 const voterSchema = new mongoose.Schema({
-    name:{
-        type:String,
-        required:true
+    name: {
+        type: String,
+        required: [true, "Name is required"],
+        trim: true,
+        minlength: [1, "Name cannot be empty"]
     },
-    age:{
-        type:Number,
-        required:true
+    age: {
+        type: Number,
+        required: [true, "Age is required"],
+        min: [18, "Age must be at least 18"]  // example rule
     },
-    aadharNumber:{
-        type:Number,
-        required:true,
-        uniq:true
+    aadharNumber: {
+        type: Number,
+        required: [true, "Aadhar number is required"],
+        unique: true
     },
-    password:{
-        type:String,
-        required: true
+    password: {
+        type: String,
+        required: [true, "Password is required"],
+        minlength: [6, "Password must be at least 6 characters long"]
     },
-    role:{
-        type:String,
-        enum:['admin','voter'],
-        default:'voter'
+    role: {
+        type: String,
+        enum: ["admin", "voter"],
+        default: "voter"
     },
-    isVoted:{
-        type:Boolean,
-        default:false,
+    isVoted: {
+        type: Boolean,
+        default: false
     }
-})
+});
+
 
 
 voterSchema.pre('save', async function(next) {
